@@ -13,6 +13,7 @@ public class FPController : MonoBehaviour
     public float verticalLookLimit = 90f;
 
     private CharacterController controller;
+    private PlayerInput input;
     private Vector2 moveInput;
     private Vector2 lookInput;
     private Vector3 velocity;
@@ -21,6 +22,8 @@ public class FPController : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        //input = GetComponent<PlayerInput>();
+        //input.actions.Enable() 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -39,13 +42,17 @@ public class FPController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        Debug.Log("moveInput");
     }
     public void OnLook(InputAction.CallbackContext context)
     {
         lookInput = context.ReadValue<Vector2>();
+        Debug.Log("lookInput");
+
     }
     public void HandleMovement()
     {
+        Debug.Log("movement");
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * moveSpeed * Time.deltaTime);
         if (controller.isGrounded && velocity.y < 0) velocity.y = -1f;
