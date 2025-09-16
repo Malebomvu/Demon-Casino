@@ -16,6 +16,15 @@ public class FPController : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform gunPoint;
 
+    [Header("Pickup Setting")]
+    public float pickupRange = 3f;
+    public Transform holdPoint;
+    private PickUpObject heldObject;
+
+    [Header("Throw Settings")]
+    public float throwForce = 20f;
+    public float throwUpwardBoost = 3f;
+
     private CharacterController controller;
     private PlayerInput input;
     private Vector2 moveInput;
@@ -42,6 +51,10 @@ public class FPController : MonoBehaviour
     {
         HandleMovement();
         HandleLook();
+        if(heldObject != null)
+        {
+            heldObject.MoveToHoldPoint(holdPoint.position);
+        }
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -68,6 +81,38 @@ public class FPController : MonoBehaviour
             Shoot();
         }
     }
+    public void OnPickUp (InputAction .CallbackContext context)
+    {
+        if (!context.performed) return;
+        if(heldObject == null)
+        {
+            Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+            if(Physics.Raycast(ray, out RaycastHit hit, pickupRange))
+            {
+                PickUpObject pickUp = hit.collider.GetComponent<PickUpObject>();
+                if(pickUp != null)
+                {
+                    pickUp.PickUp(holdPoint);
+                    heldObject = pickUp;
+                }
+            }
+        }
+        else
+        {
+            heldObject.Drop();
+            heldObject = null;
+        }
+    }
+    public void OnThrow(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        if (heldObject == null) return;
+        Vector3 dir = cameraTransform.forward;
+        Vector3 impulse = dir * throwForce + Vector3.up * throwUpwardBoost;
+
+        heldObject.Throw(impulse);
+        heldObject = null;
+    }
     private void Shoot()
     {
         if (bulletPrefab != null && gunPoint != null)
@@ -77,7 +122,7 @@ public class FPController : MonoBehaviour
             
             if (rb != null)
             {
-                rb.AddForce(gunPoint.forward * 1500f);
+                rb.AddForce(gunPoint.forward * 2100f);
             }
         }
     }
