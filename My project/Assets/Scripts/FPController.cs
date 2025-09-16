@@ -6,11 +6,15 @@ public class FPController : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed = 3f;
     public float gravity = -9.8f;
+    public float jumpHeight = 2f;
 
     [Header("Look Settings")]
     public Transform cameraTransform;
     public float lookSensitivity = 3f;
     public float verticalLookLimit = 90f;
+    [Header("Shooting")]
+    public GameObject bulletPrefab;
+    public Transform gunPoint;
 
     private CharacterController controller;
     private PlayerInput input;
@@ -49,6 +53,33 @@ public class FPController : MonoBehaviour
         lookInput = context.ReadValue<Vector2>();
         Debug.Log("lookInput");
 
+    }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if(context.performed && controller.isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2.5f * gravity);
+        }
+    }
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Shoot();
+        }
+    }
+    private void Shoot()
+    {
+        if (bulletPrefab != null && gunPoint != null)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            
+            if (rb != null)
+            {
+                rb.AddForce(gunPoint.forward * 1500f);
+            }
+        }
     }
     public void HandleMovement()
     {
