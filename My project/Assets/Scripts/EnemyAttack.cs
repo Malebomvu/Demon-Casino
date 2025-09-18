@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void Awake()
     {
-        player = GameObject.Find("player").transform;
+        player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
     
@@ -36,8 +36,8 @@ public class EnemyAttack : MonoBehaviour
         isplayerinSight = Physics.CheckSphere(transform.position, sightRange, whatisPlayer);
         isplayerinAttackrange = Physics.CheckSphere(transform.position, attackRange, whatisPlayer);
         if (isplayerinSight && !isplayerinAttackrange) Patroling();
-        if (isplayerinSight && !isplayerinAttackrange) Chase();
-        if (!isplayerinAttackrange && !isplayerinSight) Attack();
+        else if (isplayerinSight && !isplayerinAttackrange) Chase();
+        else if (!isplayerinAttackrange && !isplayerinSight) Attack();
     }
     public void Patroling()
     {
@@ -63,8 +63,7 @@ public class EnemyAttack : MonoBehaviour
     }
     public void Attack()
     {
-        agent.SetDestination(transform.position);
-        transform.LookAt(player.position);
+        transform.LookAt(player);
 
         if(!beenattacked )
         {
