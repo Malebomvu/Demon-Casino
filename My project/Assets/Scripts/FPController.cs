@@ -79,6 +79,7 @@ public class FPController : MonoBehaviour
         if (context.performed)
         {
             Shoot();
+            GetComponent<AudioSource>().Play();
         }
     }
     public void OnPickUp (InputAction .CallbackContext context)
