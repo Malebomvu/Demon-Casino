@@ -23,7 +23,7 @@ public class CasinoLight : MonoBehaviour
             {
                 lightOB.enabled = !lightOB.enabled;
                 timer = Random.Range(minTime, maxTime);
-            lightSound.Play();
+            
             }
     }
 }
