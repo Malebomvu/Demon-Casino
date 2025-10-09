@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: a315f231e294eae468c2efcf73b6b13d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cameraTransform: {instanceID: 0}
+  - bulletPrefab: {instanceID: 0}
+  - gunPoint: {instanceID: 0}
+  - holdPoint: {instanceID: 0}
+  - shootSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

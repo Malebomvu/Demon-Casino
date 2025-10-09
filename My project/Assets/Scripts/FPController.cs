@@ -32,6 +32,9 @@ public class FPController : MonoBehaviour
     private Vector3 velocity;
     private float verticalRotation = 0f;
 
+    [SerializeField] AudioClip shootSound;
+    AudioSource audiosource;
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -54,6 +57,11 @@ public class FPController : MonoBehaviour
         if(heldObject != null)
         {
             heldObject.MoveToHoldPoint(holdPoint.position);
+        }
+        if (Input.GetMouseButtonDown (0))
+        {
+            Shoot();
+            PlaySounds();
         }
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -146,5 +154,9 @@ public class FPController : MonoBehaviour
 
         cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
+    private void PlaySounds()
+    {
+        audiosource.PlayOneShot(shootSound);
     }
 }
