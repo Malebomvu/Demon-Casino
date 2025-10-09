@@ -13,7 +13,7 @@ public class FPControler2 : MonoBehaviour
     public float jumpPower = 5f;
     public float gravity = -9.8f;
 
-    public float lookSpeed = 3f;
+    public float lookSpeed = 0.0005f;
     public float lookLimit = 90f;
 
     Vector3 moveDirection = Vector3.zero;

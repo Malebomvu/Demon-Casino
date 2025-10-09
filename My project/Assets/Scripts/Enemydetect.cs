@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enem : MonoBehaviour
 {
-    public Transform player;
+    public Transform enemy;
     public float speed = 4f;
     public float stopDistance = 2f;
 
@@ -16,8 +16,8 @@ public class Enem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player != null) return;
-        Vector3 direction = player.position - transform.position;
+        if (enemy != null) return;
+        Vector3 direction = enemy.position - transform.position;
         direction.y = 0;
         float distance = direction.magnitude;
         if(distance > stopDistance )
