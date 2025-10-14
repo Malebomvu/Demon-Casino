@@ -1267,11 +1267,23 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 658244512}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &661753141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,9 +1639,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1649331628}
-        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
-        m_MethodName: Exit
+      - m_Target: {fileID: 1649331629}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2888,6 +2900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 326686520}
+  settingsMenuUI: {fileID: 573256757}
 --- !u!114 &1649331629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3328,8 +3341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f860bfa6bfbaea47bd71a85e6df41d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsscreen: {fileID: 0}
-  volumeSlider: {fileID: 0}
+  settingsscreen: {fileID: 573256757}
+  volumeSlider: {fileID: 658244514}
 --- !u!1 &2125929497
 GameObject:
   m_ObjectHideFlags: 0
