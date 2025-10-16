@@ -15,6 +15,7 @@ public class FPController : MonoBehaviour
     [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform gunPoint;
+    public AudioSource gunAudio;
 
     [Header("Pickup Setting")]
     public float pickupRange = 3f;
@@ -32,8 +33,8 @@ public class FPController : MonoBehaviour
     private Vector3 velocity;
     private float verticalRotation = 0f;
 
-    [SerializeField] AudioClip shootSound;
-    AudioSource audiosource;
+    
+  
 
     private void Awake()
     {
@@ -61,7 +62,7 @@ public class FPController : MonoBehaviour
         if (Input.GetMouseButtonDown (0))
         {
             Shoot();
-            PlaySounds();
+            
         }
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -155,8 +156,14 @@ public class FPController : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
-    private void PlaySounds()
+    public void Gun()
     {
-        audiosource.PlayOneShot(shootSound);
+       if (Input.GetMouseButtonDown (0))
+        {
+            gunAudio.Play();
+        }
     }
+
+
+
 }

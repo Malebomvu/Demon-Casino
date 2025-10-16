@@ -3,8 +3,8 @@ using UnityEngine;
 public class Enem : MonoBehaviour
 {
     public Transform enemy;
-    public float speed = 4f;
-    public float stopDistance = 2f;
+    public float speed = 3f;
+    public float stopDistance = 1f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

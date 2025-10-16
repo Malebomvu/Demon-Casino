@@ -9,6 +9,8 @@ public class Enemymovement : MonoBehaviour
     public Transform Player;
     private NavMeshAgent Enemy;
     public float speed = 0.1f;
+    public bool isChasing = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,9 +20,23 @@ public class Enemymovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     if (Player != null)
+     if (isChasing)
         {
             Enemy.SetDestination(Player.position);
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isChasing = true;
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            isChasing = false;
         }
     }
 }
