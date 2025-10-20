@@ -98106,6 +98106,7 @@ GameObject:
   - component: {fileID: 1165880983}
   - component: {fileID: 1165880982}
   - component: {fileID: 1165880992}
+  - component: {fileID: 1165880993}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -98419,6 +98420,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &1165880993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165880981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca8903f34796974eac16fdc868f3dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
 --- !u!43 &1166299210
 Mesh:
   m_ObjectHideFlags: 0
@@ -118628,8 +118642,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62ecda2f4ec55b4ba5b1dc3f77942c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: -10
+  damage: 10
   Enemy: {fileID: 1759063692}
+--- !u!114 &1358661363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358661348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608bc915512163a40896f58f06fae0a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!1 &1359066912
 GameObject:
   m_ObjectHideFlags: 0
@@ -156229,6 +156256,7 @@ GameObject:
   - component: {fileID: 1759063694}
   - component: {fileID: 1759063695}
   - component: {fileID: 1759063696}
+  - component: {fileID: 1759063697}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -156542,6 +156570,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &1759063697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759063683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca8903f34796974eac16fdc868f3dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
 --- !u!1001 &1761826672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -163241,6 +163282,7 @@ GameObject:
   - component: {fileID: 1833071848}
   - component: {fileID: 1833071847}
   - component: {fileID: 1833071857}
+  - component: {fileID: 1833071858}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -163554,6 +163596,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &1833071858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833071846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca8903f34796974eac16fdc868f3dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
 --- !u!43 &1835115696
 Mesh:
   m_ObjectHideFlags: 0
@@ -163731,6 +163786,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c2e40fa84d53ccd428f640eac126b1fb, type: 2}
+    - target: {fileID: -1688845421813853259, guid: 60dccb52dfcdb9446a5415122ffa7cb5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1663653034636220902, guid: 60dccb52dfcdb9446a5415122ffa7cb5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.019993713
@@ -163798,6 +163857,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7348044025705899580, guid: 60dccb52dfcdb9446a5415122ffa7cb5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1358661358}
+    - targetCorrespondingSourceObject: {fileID: 7348044025705899580, guid: 60dccb52dfcdb9446a5415122ffa7cb5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1358661363}
   m_SourcePrefab: {fileID: 100100000, guid: 60dccb52dfcdb9446a5415122ffa7cb5, type: 3}
 --- !u!1001 &1853294192
 PrefabInstance:

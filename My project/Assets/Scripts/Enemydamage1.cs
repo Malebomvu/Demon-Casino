@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemydamage1 : MonoBehaviour
 {
-    public float damage = 10f;
+    public float damage = -10f;
 
     private void OnCollisionEnter(Collision collision)
     {
