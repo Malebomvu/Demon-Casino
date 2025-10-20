@@ -32,6 +32,8 @@ public class FPController : MonoBehaviour
     private Vector2 lookInput;
     private Vector3 velocity;
     private float verticalRotation = 0f;
+    
+    
 
     
   
@@ -132,10 +134,20 @@ public class FPController : MonoBehaviour
             
             if (rb != null)
             {
-                rb.AddForce(gunPoint.forward * 2100f);
+                rb.AddForce(gunPoint.forward * 2500f);
             }
         }
+
     }
+    
+   
+        
+        
+             
+       
+       
+       
+    
     public void HandleMovement()
     {
         Debug.Log("movement");

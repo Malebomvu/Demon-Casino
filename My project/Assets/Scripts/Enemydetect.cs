@@ -5,6 +5,7 @@ public class Enem : MonoBehaviour
     public Transform enemy;
     public float speed = 3f;
     public float stopDistance = 1f;
+    public int health = 50;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,6 +25,15 @@ public class Enem : MonoBehaviour
         {
             Vector3 moveDir = direction.normalized;
             transform.position += speed * Time.deltaTime * moveDir;
+        }
+
+    }
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health < 0)
+        {
+            Destroy(enemy);
         }
 
     }

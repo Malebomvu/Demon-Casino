@@ -47548,6 +47548,7 @@ MonoBehaviour:
   enemy: {fileID: 651900028}
   speed: 4
   stopDistance: 2
+  health: 50
 --- !u!114 &651900023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137051,6 +137052,7 @@ MonoBehaviour:
   enemy: {fileID: 1696707745}
   speed: 4
   stopDistance: 2
+  health: 50
 --- !u!114 &1696707740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145217,6 +145219,7 @@ GameObject:
   - component: {fileID: 1759063693}
   - component: {fileID: 1759063695}
   - component: {fileID: 1759063694}
+  - component: {fileID: 1759063696}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -145384,6 +145387,7 @@ MonoBehaviour:
   enemy: {fileID: 1759063689}
   speed: 4
   stopDistance: 2
+  health: 50
 --- !u!114 &1759063693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145431,11 +145435,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: ba9e65b8572ce5f4eb02f6680fcc624a, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -145517,6 +145521,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1759063696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759063683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5149d2caeafff44a89361520d1ecf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 249303892}
+  damageSet: 25
+  minDamage: 0
+  maxDamage: 0
+  randomDamage: 1
+  setDamage: 1
+  sounds:
+  - {fileID: 8300000, guid: ba9e65b8572ce5f4eb02f6680fcc624a, type: 3}
 --- !u!1 &1768137014
 GameObject:
   m_ObjectHideFlags: 0
