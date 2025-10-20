@@ -13,21 +13,20 @@ public class PauseGame : MonoBehaviour
     public GameObject hudUI;
 
     private bool isPaused = false;
-    public bool lockCursorOnStart = false;
 
 
     void Start()
     {
-        pauseMenuUI.SetActive(false);
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(false);
 
-        if (lockCursorOnStart)
-            ResumeState();
-        else
-        {
-            Time.timeScale = 1f;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        if (settingsMenuUI != null)
+            settingsMenuUI.SetActive(false);
+
+
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 
@@ -60,7 +59,7 @@ public class PauseGame : MonoBehaviour
 
         ResumeState();
 
-        Time.timeScale = 1f;
+        Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isPaused = false;
