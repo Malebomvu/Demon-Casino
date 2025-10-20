@@ -33,8 +33,13 @@ public class Enem : MonoBehaviour
         health -= amount;
         if (health < 0)
         {
-            Destroy(enemy);
+            Die();
         }
 
+
+    }
+    void Die()
+    {
+        Destroy(enemy);
     }
 }

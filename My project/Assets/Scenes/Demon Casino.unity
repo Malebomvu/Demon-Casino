@@ -16566,6 +16566,7 @@ GameObject:
   - component: {fileID: 249303902}
   - component: {fileID: 249303903}
   - component: {fileID: 249303904}
+  - component: {fileID: 249303905}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -16853,8 +16854,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: e680c76a285d4a746a1fce54e83f739f, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -16953,6 +16954,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 777664706}
   settingsMenuUI: {fileID: 0}
+--- !u!114 &249303905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249303892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be1cd4de413eb7488567f45acda0aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 249303894}
+  footstepSource: {fileID: 249303903}
+  footstepClips:
+  - {fileID: 8300000, guid: e680c76a285d4a746a1fce54e83f739f, type: 3}
+  - {fileID: 8300000, guid: e680c76a285d4a746a1fce54e83f739f, type: 3}
+  stepInterval: 0.5
 --- !u!1 &256879136
 GameObject:
   m_ObjectHideFlags: 0
@@ -110032,6 +110051,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1663653034636220902, guid: 60dccb52dfcdb9446a5415122ffa7cb5, type: 3}
   m_PrefabInstance: {fileID: 1847296149}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1358661354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358661348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62ecda2f4ec55b4ba5b1dc3f77942c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!1 &1359066912
 GameObject:
   m_ObjectHideFlags: 0
@@ -145385,7 +145417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1759063689}
-  speed: 4
+  speed: 3
   stopDistance: 2
   health: 50
 --- !u!114 &1759063693
@@ -151926,7 +151958,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7348044025705899580, guid: 60dccb52dfcdb9446a5415122ffa7cb5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1358661354}
   m_SourcePrefab: {fileID: 100100000, guid: 60dccb52dfcdb9446a5415122ffa7cb5, type: 3}
 --- !u!1 &1853330184
 GameObject:
