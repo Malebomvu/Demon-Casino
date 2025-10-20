@@ -11,8 +11,8 @@ public class HUD : MonoBehaviour
     //public GameObject m4;
     //public GameObject m4OB;
 
-    //public GameObject glock;
-    //public GameObject glockOB;
+    public GameObject glock;
+    public GameObject glockOB;
 
     public GameObject knife;
     public GameObject knifeOB;
@@ -56,12 +56,12 @@ public class HUD : MonoBehaviour
         if (glockOB.activeInHierarchy)
         {
           //  glock.SetActive(true);
-        }
-
-        else
-        {
-           // glock.SetActive(false);
         }*/
+
+        if(glockOB.activeInHierarchy) 
+        {
+            glock.SetActive(false);
+        }
 
         if (knifeOB.activeInHierarchy)
         {

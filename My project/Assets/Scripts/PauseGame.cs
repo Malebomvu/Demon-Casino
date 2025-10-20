@@ -8,6 +8,9 @@ public class PauseGame : MonoBehaviour
     
     public GameObject pauseMenuUI;
     public GameObject settingsMenuUI;
+    [Header("UI References")]
+   
+    public GameObject hudUI;
 
     private bool isPaused = false;
 
@@ -31,20 +34,18 @@ public class PauseGame : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("pause")) // Make sure "pause" is mapped in Input Manager
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("P is pressed");
-            if (isPaused)
-                Resume();
-            else
-                Pause();
+            if (isPaused) Resume();
+            else Pause();
         }
 
     }
     void Pause()
     {
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(true);
+        if (hudUI != null) hudUI.SetActive(false);
+
 
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
@@ -53,12 +54,23 @@ public class PauseGame : MonoBehaviour
     }
     public void Resume()
     {
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        if (hudUI != null) hudUI.SetActive(true);
+
+        ResumeState();
 
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        isPaused = false;
+    }
+
+    void ResumeState()
+    {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         isPaused = false;
     }
 
