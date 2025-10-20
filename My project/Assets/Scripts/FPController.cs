@@ -10,11 +10,12 @@ public class FPController : MonoBehaviour
 
     [Header("Look Settings")]
     public Transform cameraTransform;
-    public float lookSensitivity = 3f;
+    public float lookSensitivity = 0.0001f;
     public float verticalLookLimit = 90f;
     [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform gunPoint;
+    public AudioSource gunAudio;
 
     [Header("Pickup Setting")]
     public float pickupRange = 3f;
@@ -31,6 +32,11 @@ public class FPController : MonoBehaviour
     private Vector2 lookInput;
     private Vector3 velocity;
     private float verticalRotation = 0f;
+    
+    
+
+    
+  
 
     private void Awake()
     {
@@ -54,6 +60,11 @@ public class FPController : MonoBehaviour
         if(heldObject != null)
         {
             heldObject.MoveToHoldPoint(holdPoint.position);
+        }
+        if (Input.GetMouseButtonDown (0))
+        {
+            Shoot();
+            
         }
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -123,10 +134,20 @@ public class FPController : MonoBehaviour
             
             if (rb != null)
             {
-                rb.AddForce(gunPoint.forward * 2100f);
+                rb.AddForce(gunPoint.forward * 2500f);
             }
         }
+
     }
+    
+   
+        
+        
+             
+       
+       
+       
+    
     public void HandleMovement()
     {
         Debug.Log("movement");
@@ -138,8 +159,8 @@ public class FPController : MonoBehaviour
     }
     public void HandleLook()
     {
-        float mouseX = lookInput.x * lookSensitivity;
-        float mouseY = lookInput.y * lookSensitivity;
+        float mouseX = lookInput.x * lookSensitivity*Time.deltaTime;
+        float mouseY = lookInput.y * lookSensitivity*Time.deltaTime;
 
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
@@ -147,4 +168,14 @@ public class FPController : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
+    public void Gun()
+    {
+       if (Input.GetMouseButtonDown (0))
+        {
+            gunAudio.Play();
+        }
+    }
+
+
+
 }

@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Enem : MonoBehaviour
 {
-    public Transform player;
-    public float speed = 4f;
-    public float stopDistance = 2f;
+    public Transform enemy;
+    public float speed = 3f;
+    public float stopDistance = 1f;
+    public int health = 50;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,8 +17,8 @@ public class Enem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player != null) return;
-        Vector3 direction = player.position - transform.position;
+        if (enemy != null) return;
+        Vector3 direction = enemy.position - transform.position;
         direction.y = 0;
         float distance = direction.magnitude;
         if(distance > stopDistance )
@@ -26,5 +27,19 @@ public class Enem : MonoBehaviour
             transform.position += speed * Time.deltaTime * moveDir;
         }
 
+    }
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health < 0)
+        {
+            Die();
+        }
+
+
+    }
+    void Die()
+    {
+        Destroy(enemy);
     }
 }
