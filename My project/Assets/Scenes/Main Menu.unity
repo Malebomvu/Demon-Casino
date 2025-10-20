@@ -983,7 +983,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &573256758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1428,13 +1428,13 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1331523322}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: ChangeVolume
+      - m_Target: {fileID: 658244512}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1878,8 +1878,8 @@ RectTransform:
   m_Father: {fileID: 2026108487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 5.1, y: -0.5}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 4.8184967, y: 0}
   m_SizeDelta: {x: 19.637, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &851253670
@@ -2655,7 +2655,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1331523320}
   - component: {fileID: 1331523321}
-  - component: {fileID: 1331523322}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
@@ -2694,21 +2693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02fc36145ee8a040aa43d5198310046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: d7c979b98c1b44a4d8232d2a5456b5b0, type: 2}
-  volumeSlider: {fileID: 658244514}
---- !u!114 &1331523322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331523319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61276d0ebac025c4ba26479ac4139e81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 658244514}
+  mixer: {fileID: 0}
 --- !u!1 &1370978364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,7 +2984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1474026913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3139,7 +3124,6 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 326686520}
   settingsMenuUI: {fileID: 573256757}
   hudUI: {fileID: 0}
-  lockCursorOnStart: 0
 --- !u!114 &1649331629
 MonoBehaviour:
   m_ObjectHideFlags: 0
