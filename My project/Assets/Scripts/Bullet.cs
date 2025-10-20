@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage = 10;
+    public int damage = -10;
+    public Enem Enemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,11 +16,13 @@ public class Bullet : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(other.gameObject.tag =="Enemy")
         {
-            collision.gameObject.GetComponent<Bullet>().damage = 10;      
+            Enemy = other.gameObject.GetComponent<Enem>();
+            Enemy.health = Enemy.health - 10;
+            Destroy(gameObject);
         }
         
     }
