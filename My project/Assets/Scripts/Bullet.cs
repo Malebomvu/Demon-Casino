@@ -3,27 +3,27 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage = -10;
-    public Enem Enemy;
+    public string Enemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         
     }
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.tag =="Enemy")
+        Destroy(gameObject);
+        if (collision.gameObject.TryGetComponent <Enemy>(out Enemy enemyComponent))
         {
-            Enemy = other.gameObject.GetComponent<Enem>();
-            Enemy.health = Enemy.health - 10;
-            Destroy(gameObject);
-        }
-        
+            enemyComponent.TakeDamage(10);
+        } 
     }
+    private void Start()
+    {
+        Destroy(gameObject, 10f);
+    }
+
 }
+
+
