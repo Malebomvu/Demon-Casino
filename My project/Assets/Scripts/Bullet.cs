@@ -1,29 +1,16 @@
 using UnityEngine;
 
-
 public class Bullet : MonoBehaviour
 {
-    public int damage = -10;
-    public Enem Enemy;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public float damage = 10f;
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
-    }
-    private void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.tag =="Enemy")
+        EnemyHealth enemy = other.GetComponent<EnemyHealth>();
+        if (enemy != null)
         {
-            Enemy = other.gameObject.GetComponent<Enem>();
-            Enemy.health = Enemy.health - 10;
+            enemy.DamageTaken(damage);
             Destroy(gameObject);
         }
-        
     }
 }

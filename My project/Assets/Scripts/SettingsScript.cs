@@ -12,14 +12,17 @@ public class SettingsScript : MonoBehaviour
     void Start()
     {
         // Load saved volume (or default to 0 dB if none is saved)
-        float savedVolume = PlayerPrefs.GetFloat(VolumePrefKey, 0f);
-        mixer.SetFloat("volume", savedVolume);
+        float savedVolume = PlayerPrefs.GetFloat(VolumePrefKey, 0.75f);
+        SetVolume(savedVolume); // Apply volume on start
         volumeSlider.value = savedVolume;
     }
 
-    public void SetVolume(float volume)
+    public void SetVolume(float sliderValue)
     {
-        mixer.SetFloat("volume", volume);
-        PlayerPrefs.SetFloat(VolumePrefKey, volume);
+        // Convert slider value (0–1) to decibel scale (-80 to 0)
+        float dB = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20f;
+        mixer.SetFloat("volume", dB);
+
+        PlayerPrefs.SetFloat(VolumePrefKey, sliderValue);
     }
 }
