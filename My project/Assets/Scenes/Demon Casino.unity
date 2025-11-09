@@ -21793,7 +21793,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.07924521, g: 0.017194705, b: 0.017194705, a: 1}
-  m_Intensity: 21000
+  m_Intensity: 100
   m_Range: 7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -37856,8 +37856,8 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.24528301, g: 0.13467424, b: 0.13467424, a: 1}
-  m_Intensity: 2100
-  m_Range: 7
+  m_Intensity: 200
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -37919,7 +37919,7 @@ Transform:
   m_GameObject: {fileID: 1625375469}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.83, y: 5.36, z: -6.38}
+  m_LocalPosition: {x: -12.55, y: 4.05, z: -9.58}
   m_LocalScale: {x: 0.70448, y: 0.71347, z: 0.34075}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45396,7 +45396,7 @@ MonoBehaviour:
   lightSound: {fileID: 1920138587}
   minTime: 0.5
   maxTime: 1
-  timer: 0.25
+  timer: 5
 --- !u!114 &1920138589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45431,7 +45431,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.07924521, g: 0.017194705, b: 0.017194705, a: 1}
-  m_Intensity: 21000
+  m_Intensity: 200
   m_Range: 6
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
