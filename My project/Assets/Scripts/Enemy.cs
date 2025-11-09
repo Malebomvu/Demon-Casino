@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class Playerhealth : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    public int health;
-    public int maxHealth = 50;
+    [SerializeField] float health, maxHealth = 50f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        health = maxHealth;
+        health = maxHealth; 
     }
-    public void TakeDamage(int amount)
+    public void TakeDamage (float damageAmount)
     {
-        health -= amount;
-        if (health <= 0)
+        health -= damageAmount;
+        if (health<=0)
         {
             Destroy(gameObject);
         }
-    }    
+    }
 
     // Update is called once per frame
     void Update()

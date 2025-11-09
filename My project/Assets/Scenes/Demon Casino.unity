@@ -3702,14 +3702,7 @@ Transform:
   - {fileID: 1327807754}
   - {fileID: 51459316}
   - {fileID: 1134984546}
-  - {fileID: 1688898734}
-  - {fileID: 1898597998}
-  - {fileID: 1560580413}
-  - {fileID: 1223688465}
-  - {fileID: 345922829}
-  - {fileID: 1934181713}
-  - {fileID: 1964319982}
-  - {fileID: 1872879720}
+  - {fileID: 798716584}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &119815040
@@ -10284,7 +10277,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 116883382}
+  m_Father: {fileID: 798716584}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &345922830
 MonoBehaviour:
@@ -26651,6 +26644,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3e100ee0a531c89459d6f235f61f4495, type: 3}
   m_PrefabInstance: {fileID: 798625592}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &798716583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 798716584}
+  m_Layer: 0
+  m_Name: Interior Lighting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &798716584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798716583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1688898734}
+  - {fileID: 1898597998}
+  - {fileID: 1560580413}
+  - {fileID: 1223688465}
+  - {fileID: 345922829}
+  - {fileID: 1934181713}
+  - {fileID: 1964319982}
+  - {fileID: 1872879720}
+  m_Father: {fileID: 116883382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &799385657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47081,7 +47113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 116883382}
+  m_Father: {fileID: 798716584}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1223688466
 MonoBehaviour:
@@ -58664,7 +58696,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 116883382}
+  m_Father: {fileID: 798716584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1560580414
 AudioSource:
@@ -61068,7 +61100,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 116883382}
+  m_Father: {fileID: 798716584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1688898735
 MonoBehaviour:
@@ -69667,7 +69699,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 116883382}
+  m_Father: {fileID: 798716584}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1872879721
 MonoBehaviour:
@@ -70273,7 +70305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 116883382}
+  m_Father: {fileID: 798716584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1898597999
 MonoBehaviour:
@@ -70931,6 +70963,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 180c1d1920841ae408c89bd4008436c0, type: 3}
       propertyPath: m_Name
       value: healthpickupmodel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 180c1d1920841ae408c89bd4008436c0, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 180c1d1920841ae408c89bd4008436c0, type: 3}
       propertyPath: m_TagString
@@ -71706,7 +71742,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 116883382}
+  m_Father: {fileID: 798716584}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1934181714
 MonoBehaviour:
@@ -72395,7 +72431,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 116883382}
+  m_Father: {fileID: 798716584}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!82 &1964319983
 AudioSource:
