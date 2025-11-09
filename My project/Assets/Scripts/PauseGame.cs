@@ -19,14 +19,22 @@ public class PauseGame : MonoBehaviour
     void Start()
     {
         pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(false);
+
+        if (hudUI != null)
+            hudUI.SetActive(true); // ✅ Show HUD at start
 
         if (lockCursorOnStart)
-            ResumeState();
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1f;
+        }
         else
         {
-            Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            Time.timeScale = 1f;
         }
     }
 
@@ -57,8 +65,6 @@ public class PauseGame : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         if (hudUI != null) hudUI.SetActive(true);
-
-        ResumeState();
 
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;

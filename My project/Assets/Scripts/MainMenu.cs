@@ -22,15 +22,15 @@ public class MainMenu : MonoBehaviour
         settingsscreen.SetActive(false);
         //gameintroTitleCanvas.SetActive(true);
 
-        // Game is paused while in menu
-        Time.timeScale = 0;
+       
+       
     }
 
 
 
     public void Play()
     {
-        Time.timeScale = 0;
+        
         // Load the game scene directly if "Play" is selected
         SceneManager.LoadScene("Demon Casino");
     }
@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
     public void Settings()
     {
         settingsscreen.SetActive(true);
-       // gameintroTitleCanvas.SetActive(false);
+       // gameintroTitleCanvas.SetActive(false)
     }
 
     public void Back()
