@@ -10,8 +10,9 @@ public class FPController : MonoBehaviour
 
     [Header("Look Settings")]
     public Transform cameraTransform;
-    public float lookSensitivity = 0.0001f;
+    public float lookSensitivity = 2f;
     public float verticalLookLimit = 90f;
+
     [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform gunPoint;
@@ -27,46 +28,31 @@ public class FPController : MonoBehaviour
     public float throwUpwardBoost = 3f;
 
     private CharacterController controller;
-    private PlayerInput input;
     private Vector2 moveInput;
     private Vector2 lookInput;
     private Vector3 velocity;
     private float verticalRotation = 0f;
-    
-    
+    private bool isGrounded => controller.isGrounded;
 
-    
-  
+
+
+
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        //input = GetComponent<PlayerInput>();
-        //input.actions.Enable() 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        LockCursor();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
    private void Update()
     {
         HandleMovement();
         HandleLook();
-        if(heldObject != null)
-        {
+        if (heldObject != null)
             heldObject.MoveToHoldPoint(holdPoint.position);
-        }
-        if (Input.GetMouseButtonDown (0))
-        {
-            Shoot();
-            
-        }
     }
+
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
@@ -82,7 +68,7 @@ public class FPController : MonoBehaviour
     {
         if(context.performed && controller.isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2.5f * gravity);
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
     public void OnShoot(InputAction.CallbackContext context)
@@ -98,11 +84,11 @@ public class FPController : MonoBehaviour
         if (!context.performed) return;
         if(heldObject == null)
         {
-            Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
-            if(Physics.Raycast(ray, out RaycastHit hit, pickupRange))
+            //Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit hit, pickupRange))
             {
                 PickUpObject pickUp = hit.collider.GetComponent<PickUpObject>();
-                if(pickUp != null)
+                if (pickUp != null)
                 {
                     pickUp.PickUp(holdPoint);
                     heldObject = pickUp;
@@ -130,14 +116,15 @@ public class FPController : MonoBehaviour
         if (bulletPrefab != null && gunPoint != null)
         {
             GameObject bullet = Instantiate(bulletPrefab, gunPoint.position, gunPoint.rotation);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            
-            if (rb != null)
+            if (bullet.TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
                 rb.AddForce(gunPoint.forward * 2500f);
             }
-        }
 
+            if (gunAudio != null)
+                gunAudio.Play();
+
+        }
     }
     
    
@@ -151,9 +138,14 @@ public class FPController : MonoBehaviour
     public void HandleMovement()
     {
         Debug.Log("movement");
+
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * moveSpeed * Time.deltaTime);
-        if (controller.isGrounded && velocity.y < 0) velocity.y = -1f;
+
+
+        if (isGrounded && velocity.y < 0)
+            velocity.y = -1f;
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
@@ -176,6 +168,17 @@ public class FPController : MonoBehaviour
         }
     }
 
+    public void LockCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
 
 
 }
