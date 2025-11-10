@@ -44,8 +44,9 @@ public class EnemyHealth : MonoBehaviour
     {
         if (isDead) return; // Prevent double execution
         isDead = true;
-
-        // Increment global kill counter
+        EnemySpawnZone zone = GetComponentInParent<EnemySpawnZone>();
+        if (zone != null)
+            zone.OnEnemyKilled(gameObject);
         demonsKilled++;
         UpdateCounter();
         ShowKillPopup();

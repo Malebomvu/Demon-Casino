@@ -16,48 +16,79 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
 
     public TMP_Text damagePopupText;
+    public FPController playerController;
+
+    private bool isDead = false;
+    private Coroutine popupRoutine;
 
     void Start()
     {
-        deathScreen.SetActive(false);
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = health;
-        damagePopupText.gameObject.SetActive(false);
+        if (deathScreen != null) deathScreen.SetActive(false);
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = health;
+        }
+        if (damagePopupText != null) damagePopupText.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        if (health <= 0)
+        if (!isDead && health <= 0)
         {
-            health = 0;
-            player.GetComponent<FirstPersonController>().enabled = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            hud.SetActive(false);
-            inv.SetActive(false);
-            deathScreen.SetActive(true);
+            Die();
         }
 
         if (health > maxHealth)
-        {
             health = maxHealth;
-        }
 
-        healthSlider.value = health;
+        if (healthSlider != null)
+            healthSlider.value = health;
     }
 
     public void TakeDamage(float damageAmount)
     {
+        if (isDead) return;
+
         health -= damageAmount;
-        ShowDamagePopup("-" + damageAmount + " HP");
         healthSlider.value = health;
+
+        ShowDamagePopup($"-{damageAmount:F0} HP");
     }
 
     private void ShowDamagePopup(string message)
     {
+        if (damagePopupText == null) return;
+
         damagePopupText.text = message;
         damagePopupText.gameObject.SetActive(true);
-        Invoke(nameof(HideDamagePopup), 2f);
+
+        if (popupRoutine != null)
+            StopCoroutine(popupRoutine);
+        popupRoutine = StartCoroutine(HidePopupAfterDelay(2f));
+    }
+
+    private IEnumerator HidePopupAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        damagePopupText.gameObject.SetActive(false);
+        popupRoutine = null;
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        health = 0;
+
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+            playerController.UnlockCursor();
+        }
+
+        if (hud != null) hud.SetActive(false);
+        if (inv != null) inv.SetActive(false);
+        if (deathScreen != null) deathScreen.SetActive(true);
     }
 
     private void HideDamagePopup()
@@ -67,10 +98,33 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(float healAmount)
     {
+
+        if (isDead) return;
+
         health += healAmount;
         if (health > maxHealth)
             health = maxHealth;
 
-        healthSlider.value = health;
+        if (healthSlider != null)
+            healthSlider.value = health;
     }
+    public void Respawn()
+    {
+        health = maxHealth;
+        isDead = false;
+
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+            playerController.LockCursor();
+        }
+
+        if (hud != null) hud.SetActive(true);
+        if (inv != null) inv.SetActive(true);
+        if (deathScreen != null) deathScreen.SetActive(false);
+
+        if (healthSlider != null)
+            healthSlider.value = health;
+    }
+
 }

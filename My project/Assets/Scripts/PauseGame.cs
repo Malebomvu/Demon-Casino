@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseGame : MonoBehaviour
@@ -11,30 +12,36 @@ public class PauseGame : MonoBehaviour
     [Header("UI References")]
    
     public GameObject hudUI;
-
+    public Slider volumeSlider;
     private bool isPaused = false;
-    public bool lockCursorOnStart = false;
+    public bool lockCursorOnStart = true;
 
 
     void Start()
     {
-        pauseMenuUI.SetActive(false);
-        settingsMenuUI.SetActive(false);
+        Time.timeScale = 1f;
 
-        if (hudUI != null)
-            hudUI.SetActive(true); // ✅ Show HUD at start
+        // Ensure UI states
+        pauseMenuUI?.SetActive(false);
+        settingsMenuUI?.SetActive(false);
+        hudUI?.SetActive(true);
 
+        // Handle cursor lock
         if (lockCursorOnStart)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            Time.timeScale = 1f;
         }
         else
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Time.timeScale = 1f;
+        }
+
+        // 🎵 Register in-game volume slider to SoundManager (if available)
+        if (volumeSlider != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.RegisterSlider(volumeSlider);
         }
     }
 
@@ -83,23 +90,26 @@ public class PauseGame : MonoBehaviour
 
     public void OpenSettings()
     {
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(false);
+        pauseMenuUI?.SetActive(false);
+        settingsMenuUI?.SetActive(true);
 
-        if (settingsMenuUI != null)
-            settingsMenuUI.SetActive(true);
+        // 🎚️ Ensure settings menu volume slider still works
+        if (volumeSlider != null && SoundManager.Instance != null)
+        {
+            SoundManager.Instance.RegisterSlider(volumeSlider);
+        }
     }
 
     public void CloseSettings()
     {
-        if (settingsMenuUI != null)
-            settingsMenuUI.SetActive(false);
-
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(true);
+        settingsMenuUI?.SetActive(false);
+        pauseMenuUI?.SetActive(true);
     }
     public void Exit()
     {
+        Time.timeScale = 1f; // Unpause the game before leaving
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         // Go back to Main Menu scene instead of quitting
         SceneManager.LoadScene("Main Menu");
     }
